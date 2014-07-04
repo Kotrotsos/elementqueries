@@ -3,14 +3,87 @@
 	<head>
 		<title>jQuery Boilerplate</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../src/jquery.boilerplate.js"></script>
+		<script src="../src/jquery.elementquery.js"></script>
+		<style>
+			*, :after, :before {
+			  box-sizing: border-box;
+			}
+			body {
+				padding:0; margin:0;
+			}
+			div {
+				margin-bottom:10px;
+			} 
+
+			.wrapper {
+				 width: 100%;
+			}
+			.wrapper-700 {
+				width: 700px;
+			}
+			.wrapper-768 {
+				width: 768px;
+			}
+			.wrapper-1024 {
+				width: 1024px;
+			}
+			.component {
+			  float: left;
+			  padding: .5em;
+			  width: 100%;
+			  background-color:red;
+			  display: block;
+			}
+			.l-aside.eq-tablet .component {
+				background-color:green;
+			}
+			.l-aside.eq-desktop .component {
+				background-color:blue;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="element"></div>
+	<h3>Element queries jQuery plugin. See source for usage info</h3>
+	
+	<div class="wrapper">
+		<div class="l-aside eq-phone eq-tablet">
+			<div class="component">
+				Just resize. 3 element queries (see source)
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper-700">
+		<div class="l-aside">
+			<div class="component">
+				This is fixed at 700px width
+			</div>
+		</div>
+	</div>
+
+    <div class="wrapper-768">
+		<div class="l-aside">
+			<div class="component">
+				This is fixed at 768px width
+			</div>
+		</div>
+	</div>
+
+ 	<div class="wrapper-1024">
+		<div class="l-aside">
+			<div class="component">
+				This is fixed at 1024 width
+			</div>
+		</div>
+	</div>
+
 		<script>
 			$(function() {
-				$("#element").defaultPluginName({
-					propertyName: "a custom value"
+				$(".l-aside").elementquery({
+					breakpoints: [ 
+						{  "bp": 600 ,"classname": "eq-phone" },
+						{  "bp": 768 ,"classname": "eq-tablet" }, 
+						{  "bp": 1024 ,"classname": "eq-desktop" }]
 				});
 			});
 		</script>

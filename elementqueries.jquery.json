@@ -1,0 +1,29 @@
+{
+	"name": "elementqueries",
+	"title": "Element Queries jQuery plugin",
+	"description": "Easily perform element queries on any element",
+	"keywords": [
+		"jquery",
+		"elment queries",
+		"plugins"
+	],
+	"version": "0.0.1",
+	"author": {
+		"name": "Marco Kotrotsos",
+		"email": "kotrotsos@gmail.com",
+		"url": "https://kotrotsos.com"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": ""
+		}
+	],
+	"bugs": "",
+	"homepage": "",
+	"docs": "",
+	"download": "h",
+	"dependencies": {
+		"jquery": ">=1.4"
+	}
+}
