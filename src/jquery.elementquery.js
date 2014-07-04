@@ -33,9 +33,15 @@
 				$.each(set, function( ) {
 					var element = $(this),
 						computedWidth = element.width(),
-						classname  = element.attr( "class" );
+						classname  = element.attr( "class" ),
+						classlist = [];
 
-					element.attr("class", classname.replace( /eq-phone|eq-tablet|eq-desktop+/g, "" )); 
+					eqbp.forEach(function(obj) { 
+						classlist.push( obj.classname ); 
+					});
+
+					var classlistRegExp = new RegExp(classlist.join("|") + '+','g')
+					element.attr("class", classname.replace( classlistRegExp, "" )); 
 
 					console.log("container width ", computedWidth);
 					var classesToAdd = eqbp.filter(function (el) { 
