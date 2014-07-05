@@ -1,12 +1,12 @@
-// the semi-colon before function invocation is a safety net against concatenated
-// scripts and/or other plugins which may not be closed properly.
+
 ;(function ( $, window, document, undefined ) {
 		var pluginName = "elementquery",
 				defaults = {
 					breakpoints: [ 
 						{  "bp": 600 ,"classname": "eq-phone" },
 						{  "bp": 768 ,"classname": "eq-tablet" }, 
-						{  "bp": 1024 ,"classname": "eq-desktop" }]
+						{  "bp": 1024 ,"classname": "eq-desktop" }],
+					debounce: 500
 				};
 
 
@@ -22,9 +22,21 @@
 				var settings = this.settings;
 				this.setElementQueries( settings );
 				var $this = this;
-				$(window).on("resize", function () {
-					$this.setElementQueries( settings );
-					});
+
+				var resizeTimer;
+				$(window).resize(function () {
+				    if (resizeTimer) {
+				        clearTimeout(resizeTimer);   // clear any previous pending timer
+				    }
+				     // set new timer
+				    resizeTimer = setTimeout(function() {
+				        resizeTimer = null;
+				        $this.setElementQueries( settings );
+				    }, settings.debounce);  
+				})
+
+
+				 
 			},
 			setElementQueries: function(settings) {
 				var set = $( this.element ),
